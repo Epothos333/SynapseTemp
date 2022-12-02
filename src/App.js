@@ -1,6 +1,6 @@
 import './App.css';
 import Doggo from './components/Test';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Name from './components/Name';
 
@@ -10,6 +10,10 @@ function App() {
   const triggerApplesCb = () => {
     sethasCarrots(!hasCarrots)
   }
+
+  useEffect(() => {
+    console.log('app')
+  }, [])
 
   return (
     <>
