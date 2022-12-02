@@ -2,6 +2,7 @@ import './App.css';
 import Doggo from './components/Test';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Name from './components/Name';
 
 function App() {
   const [hasCarrots, sethasCarrots] = useState(false)
@@ -12,6 +13,7 @@ function App() {
 
   return (
     <>
+      <Name />
       <p>Johnny has an apple? {hasCarrots.toString()}</p>
       <Doggo initialCounter={9} appleCb={triggerApplesCb} />
       <Link to="/home">Synapse Home Page</Link><br></br>
