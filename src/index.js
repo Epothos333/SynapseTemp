@@ -8,11 +8,14 @@ import { store } from './redux/store'
 import { Provider } from 'react-redux'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+/* <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode> 
+    rendering root with this code causes useEffect to be triggered twice with an empty state array. Removing the React.StrictMode solves that issue. 
+    */
 root.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
+    <RouterProvider router={router} />
   </Provider>
 );
 
