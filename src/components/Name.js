@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setName } from "../redux/reducers/user";
+import { setName } from "../redux/slices/user";
 
 const Name = () => {
   const nameFromStore = useSelector(state => state.user.name)
