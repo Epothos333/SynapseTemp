@@ -2,55 +2,39 @@ import React, { useState }from "react";
 import { useSelector, useDispatch} from 'react-redux';
 import { addMyWords, removeMyWords, addMasteredWords, removeMasteredWords } from '../redux/slices/words';
 
-
 const Test = (()=>{
     const dispatch = useDispatch();//dispatch allows you to use reducers written in a slice
     const myWords = useSelector(state => state.word.myWords);//useSelector() allows access to state variables
-    const masteredWords = useSelector(state => state.word.masteredWords);
-    const [addWord, addChange] = useState("");
-    const [removeWord, removeChange] = useState("");
-    const [addMastered, addChangeMastered] = useState("");
-    const [removeMastered, removeChangeMastered] = useState("");
-    const handleAddMyWord = () => {
-        dispatch(addMyWords(addWord));
+    const [currentSpelling, changeSpelling] = useState("");
+    const [testQuestion, incrementQuestion] = useState(0);
+    const hearWord = () => {
+        //get audio file for the word the user is currently on and play it.
+
+        const wordAudio = require("../assets/"+ myWords[testQuestion]+".mp3");
+        new Audio(wordAudio).play();
     }
-    const handleRemoveMyWord = () => {
-        dispatch(removeMyWords(removeWord));
-    }
-    const handleAddMasteredWord = () => {
-        dispatch(addMasteredWords(addMastered));
-    }
-    const handleRemoveMasteredWord = () => {
-        dispatch(removeMasteredWords(removeMastered));
+    const handleNextQuestion = () => {
+        if(testQuestion<myWords.length-1){
+            incrementQuestion(testQuestion+1);
+        }
+        if(currentSpelling===myWords[testQuestion]){
+            console.log("Correct answer");
+        }
+        else{
+            console.log("incorrect answer");
+        }
+        changeSpelling("");
+        
     }
     return (
         <div>
-            <h1>Testing Your Words!</h1>
-            <div style={{display:'flex',flexDirection:'row'}}>
-                <div>
-                    <h3>Word List</h3>
-                    <ul>
-                        {myWords.map((e,i)=>{ return <li key={i}>{e}</li>})}
-                    </ul>
-                </div>
-                <div>
-                    <h3>Mastered Words</h3>
-                    <ul>
-                        {masteredWords.map((e,i)=>{ return <li key={i}>{e}</li>})}
-                    </ul>
-                </div>
+            <h1 style={{margin:'10px', padding:'20px'}}>Welcome to your Spelling Safari test</h1>
+            <div id="testQuestionContainer" style={{borderStyle:'solid', margin:'10px', padding:'20px'}}>
+                <p>Speaker image here</p>
+                <button onClick={hearWord}>Play Audio</button><br/>
+                <input type="text" placeholder="spell the word you hear" value={currentSpelling} onChange={(e)=>{changeSpelling(e.target.value)}}></input>
+                <button onClick={handleNextQuestion}>Submit Answer</button>
             </div>
-            <h5>Word List</h5>
-            <input type="text" value={addWord} onChange={(e) => addChange(e.target.value)}/> 
-            <button onClick={handleAddMyWord}>Add Word to list</button><br/>
-            <input type="text" value={removeWord} onChange={(e) => removeChange(e.target.value)}/> 
-            <button onClick={handleRemoveMyWord}>Remove Word from list</button><br/><br/>
-
-            <h5>Mastered Words</h5>
-            <input type="text" value={addMastered} onChange={(e) => addChangeMastered(e.target.value)}/> 
-            <button onClick={handleAddMasteredWord}>Add Word to mastered</button><br/>
-            <input type="text" value={removeMastered} onChange={(e) => removeChangeMastered(e.target.value)}/> 
-            <button onClick={handleRemoveMasteredWord}>Remove Word from mastered</button>
         </div>
     );
 });
