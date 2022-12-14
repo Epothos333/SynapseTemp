@@ -21,7 +21,8 @@ function App() {
       <p>Johnny has an apple? {hasCarrots.toString()}</p>
       <Doggo initialCounter={9} appleCb={triggerApplesCb} />
       <Link to="/home">Synapse Home Page</Link><br></br>
-      <Link to="/about">Synapse About Page</Link>
+      <Link to="/about">Synapse About Page</Link><br></br>
+      <Link to="/test">Test Your Words</Link>
     </>
   );
 }

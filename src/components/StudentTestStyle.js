@@ -1,0 +1,51 @@
+const styles = {
+    testContainer:{
+        backgroundColor:'#4394e6',
+        width:'100%',
+        position:'absolute',
+        height:'50%',
+        borderRadius:'5px'
+    },
+    questionContainer:{
+        borderStyle:'solid',
+        margin:'30px',
+        padding:'20px',
+        backgroundColor:'#fc7628',
+        borderRadius:'8px',
+        width:'60%',
+        display:'flex',
+        flexDirection:'column',
+        justifyContent:'center'
+    },
+    header:{
+        margin:'10px',
+        padding:'20px',
+        color:'#5a5a5a'
+
+    },
+    audioButton:{
+        fontWeight:'bold',
+        display:'flex',
+        flexDirection:'column',
+        backgroundColor:'white'
+    },
+    submitButton:{
+        fontWeight:'bold'
+    },
+    spellingInput:{
+        fontWeight:'bold',
+        margin:'5px',
+        padding:'3px',
+    },
+    navLink:{
+        margin:'30px',
+        padding:'20px',
+        color:'#fc7628',
+        fontWeight:'bold',
+    },
+    image:{
+        height:'70px',
+        width:'80px'
+    }
+}
+export default styles;
